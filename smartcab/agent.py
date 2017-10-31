@@ -65,19 +65,8 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Set 'state' as a tuple of relevant data for the agent    
-        if waypoint is None: state = "None" 
-        else: state = waypoint
-        #state = ""
-        if inputs.get('light') is None: state = state + "None" 
-        else: state = state + inputs.get('light')
-        if inputs.get('oncoming') is None: state = state + "None" 
-        else: state = state + inputs.get('oncoming')
-        if inputs.get('right') is None: state = state + "None" 
-        else: state = state + 'right'
-        if inputs.get('left') is None: state = state + "None" 
-        else: state = state + inputs.get('left')
-        #state = waypoint + inputs.get('light') + inputs.get('oncoming') + inputs.get('right') + inputs.get('left')
-        #print state
+        state = (waypoint,inputs.get('light'),inputs.get('oncoming'),inputs.get('right'),inputs.get('left'))
+
         return state
 
 
@@ -89,12 +78,8 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Calculate the maximum Q-value of all actions for a given state
-        print self.Q[state]
-        maxval = max(self.Q[state].iteritems(), key=operator.itemgetter(1))[0]
-        maxQ = maxval
-        if maxQ == "none":
-            maxQ = None
-        print maxQ
+        #print self.Q[state]
+        maxQ = max(self.Q[state].values())
         return maxQ 
 
 
@@ -107,14 +92,13 @@ class LearningAgent(Agent):
         # When learning, check if the 'state' is not in the Q-table
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
-        if(self.Q.has_key(state)==False):
-            self.Q[state] = dict()
-            waypoint = self.planner.next_waypoint()
-            self.Q[state][waypoint] = 0.0
-            #self.Q[state]["forward"] = 0.0
-            #self.Q[state]["left"] = 0.0
-            #self.Q[state]["right"] = 0.0
-            self.Q[state]["none"] = 0.1
+        if self.learning ：
+            if self.Q.has_key(state)==False :
+                self.Q[state] = dict()
+                self.Q[state]["forward"] = 0.0
+                self.Q[state]["left"] = 0.0
+                self.Q[state]["right"] = 0.0
+                self.Q[state]["none"] = 0.0
 
         return
 
@@ -135,18 +119,20 @@ class LearningAgent(Agent):
         # When learning, choose a random action with 'epsilon' probability
         #   Otherwise, choose an action with the highest Q-value for the current state
         if self.learning == False or self.epsilon > 0.01:
-            r = int(10000*random.random())%2
+            r = int(10000*random.random())%4
             print r
-            if r == 0:  action = self.next_waypoint
-            #if r == 0:  action = "left"
-            #elif r == 1:  action = "right"
-            #elif r == 2:  action = "forward"
+            #if r == 0:  
+			#action = self.next_waypoint
+			#action = None
+            if r == 0:  action = "left"
+            elif r == 1:  action = "right"
+            elif r == 2:  action = "forward"
             else: action = None
         else :
             if self.next_waypoint == self.get_maxQ(state):
                 action = self.get_maxQ(state)
 
- 
+		#action = None
         return action
 
 
