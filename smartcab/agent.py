@@ -166,7 +166,9 @@ class LearningAgent(Agent):
         next_state = self.build_state()
         self.createQ(next_state)
         if state[0] == action :
-            reward = reward + 5
+            reward = reward + 2
+        else:
+            reward = reward - 2
         self.Q[state][action] = (1-self.alpha)*self.Q[state][action] + self.alpha*(reward + self.get_maxQ(next_state))
                 
                 
@@ -215,7 +217,7 @@ def run():
     # Follow the driving agent
     # Flags:
     #   enforce_deadline - set to True to enforce a deadline metric
-    env.set_primary_agent(agent,enforce_deadline=True)
+    env.set_primary_agent(agent,enforce_deadline=False)
 
     ##############
     # Create the simulation
@@ -231,7 +233,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run(n_test=10,tolerance=0.05)
+    sim.run(n_test=10,tolerance=0.01)
 
 
 if __name__ == '__main__':
