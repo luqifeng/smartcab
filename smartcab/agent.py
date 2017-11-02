@@ -130,18 +130,16 @@ class LearningAgent(Agent):
         # When learning, choose a random action with 'epsilon' probability
         #   Otherwise, choose an action with the highest Q-value for the current state
         if self.learning == False or random.random() > 1 - self.epsilon:
-            r = random.randint(0, 3)
-            print r
-            #if r == 0:  
-			#action = self.next_waypoint
-			#action = None
-            if r == 0:  action = "left"
-            elif r == 1:  action = "right"
-            elif r == 2:  action = "forward"
-            else: action = None
+            action = random.choice(self.valid_actions)
         else :
-            
-            action = max(self.Q[state].iteritems(), key=operator.itemgetter(1))[0]
+            actions = []
+            maxQ = self.get_maxQ(state)
+            for i in self.Q[state].keys():
+                if self.Q[state][i] == maxQ:
+                    actions.append(i)
+            #action = max(self.Q[state].iteritems(), key=operator.itemgetter(1))[0]
+            print actions
+            action = random.choice(actions)
             if action == "none":
                 action = None
 
@@ -169,7 +167,7 @@ class LearningAgent(Agent):
             reward = reward + 2
         else:
             reward = reward - 2
-        self.Q[state][action] = (1-self.alpha)*self.Q[state][action] + self.alpha*(reward + self.get_maxQ(next_state))
+        self.Q[state][action] = (1-self.alpha)*self.Q[state][action] + self.alpha*reward
                 
                 
 
