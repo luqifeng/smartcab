@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>smartcab</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>smartcab</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11,8 +13,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1107,6 +1109,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2535,6 +2538,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3025,6 +3029,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8755,9 +8760,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8960,14 +8962,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8990,16 +8986,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9136,9 +9122,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9228,9 +9211,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9275,9 +9255,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9574,7 +9551,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9595,6 +9571,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11265,7 +11246,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11577,7 +11558,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11591,9 +11571,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11654,10 +11631,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11668,11 +11643,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11904,7 +11877,18 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答：</strong> 智能出租车并没有移动，驾驶代理程序获得的奖励在不停的变化。因为智能车始终没有移动，所以如果红灯的时候，会获得正奖励，如果亮绿灯时，如果左右路口，或者交叉路口有车辆时，则会有个小的正奖励，但如果路口都没有车的时候，则会是负奖励。</p>
+<p><strong>回答：</strong> 智能出租车并没有移动，驾驶代理程序获得的奖励在不停的变化。因为智能车始终没有移动，所以如果红灯的时候，会获得正奖励，如果亮绿灯时，如果左右路口，或者交叉路口有车辆时，则会有个小的正奖励，但如果路口都没有车的时候，则会是负奖励。
+        elif action == None:
+           if light == 'green' and inputs['oncoming'] != 'left':
+                violation = 1
+  在不动作的时候，绿灯并且对面的车不左转就会使violation为1，如果violation为0，则后面会再随机减值。
+        if violation == 0:
+            if action == agent.get_next_waypoint(): # Was it the correct action?
+                reward += 2 - penalty # (2, 1)
+            elif action == None and light != 'green': # Was the agent stuck at a red light?
+                reward += 2 - penalty # (2, 1)
+            else: # Valid but incorrect
+                reward += 1 - penalty # (1, 0)</p>
 
 </div>
 </div>
@@ -11941,7 +11925,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答：</strong></p>
 <ul>
-<li>初始化函数有三个比较重要的Flag，learning标志着agent是否学习，这个值会被赋给self.learning，然后在choose_action和learn函数里面，都根据这个值来决定函数的功能。epsilon表示随机探索因子，表示随机动作占动作总数的比例。alpha表示学习因子，表示新奖励对于矩阵分数的影响系数。</li>
+<li>初始化函数有三个比较重要的Flag，learning标志着agent是否学习，这个值会被赋给self.learning，然后在choose_action和learn函数里面，都根据这个值来决定函数的功能。epsilon表示随机探索因子，表示随机动作占动作总数的比例。alpha表示学习因子，表示新奖励对于Q值的影响系数。</li>
 <li>当代理程序执行一个行动时，调用Environment类的函数的act函数。</li>
 <li>render_text()是用于无图形界面的文字显示，而render()则是图形界面的显示。</li>
 <li>next_waypoint()先考虑东西方，再考虑南北方。</li>
@@ -11996,9 +11980,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt"></div>
-
+<div class="output_area"><div class="prompt"></div>
 
 
 <div class="output_png output_subarea ">
@@ -13183,7 +13165,7 @@ mZmZWY38PyPOd3Kdr0slAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答：</strong></p>
 <ul>
-<li>这里的大部分特征状态都与学习的安全性以及效率有关。waypoint关系效率，而inputs里面则与安全有关系。首先因为waypoint直接就是目的地方向，如果没有这个特征状态，代理程序连方向都无法确认。而inputs里面的light，left，right，oncoming则主要与安全性有关系，避免违规和事故，必须有这些特征状态。我认为deadline可以不被选择，如果有deadline，代理程序可能会为了最终的效率而牺牲安全性。所以不选择使用deadline。 并且Deadline会让矩阵变得庞大，deadline的初始步数是距离的5倍，意味着距离是10的时候dedline有50个数值，这个数值意味着状态可以翻50倍，严重影响模型的效率以及可靠性。</li>
+<li>这里的大部分特征状态都与学习的安全性以及效率有关。waypoint关系效率，而inputs里面则与安全有关系。首先因为waypoint直接就是目的地方向，如果没有这个特征状态，代理程序连方向都无法确认。而inputs里面的light，left，right，oncoming则主要与安全性有关系，避免违规和事故，必须有这些特征状态。我认为deadline可以不被选择，如果有deadline，代理程序可能会为了最终的效率而牺牲安全性。所以不选择使用deadline。 并且Deadline会让矩阵变得庞大，deadline的初始步数是距离的5倍，意味着距离是10的时候dedline有50个数值，这个数值意味着状态可以翻50倍，严重影响模型的效率以及可靠性。效率主要指的是学习的效率，384个状态翻50倍之后则是2920个状态，每个状态四种动作。这意味着遍历一遍全部的可能性则需要近一万次的动作。如果原本达到最优性能需要1000局的训练，则现在可能需要50000局，时间算力倍增。并且测试动作的效率也会降低，不过因为现在的索引技术足够，所以这个降低的倒不是很多。可靠性我主要是是说在接近最优算法下，也总会有某些状态的某些动作是没有被训练过的，如果状态翻50倍，那么没有训练过的状态动作也会更多，自然失误的可能性也会相应的有更多的情况，所以导致可靠性的下降。</li>
 </ul>
 
 </div>
@@ -13295,9 +13277,7 @@ $$ \epsilon_{t+1} = \epsilon_{t} - 0.05, \hspace{10px}\textrm{for trial number }
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt"></div>
-
+<div class="output_area"><div class="prompt"></div>
 
 
 <div class="output_png output_subarea ">
@@ -14521,7 +14501,7 @@ Hg2trGZ+JEhfAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答：</strong></p>
 <ul>
-<li>基本驾驶代理程序和Q-Learning代理程序，QLearing的算法，明显的让错误动作下降，并且让违法和事故都有下降的趋势。</li>
+<li>基本驾驶代理程序和Q-Learning代理程序的相同之处就在于流程，同样是状态~动作~奖励~新的状态~新的动作~新的奖励，如此循环~~</li>
 <li>大概需要做20多次的训练，在给定的容忍度下，这个数字是合理的。</li>
 <li>探索因子准确的在参数面板中显示。</li>
 <li>随着实验的增加，不良动作有所减少，平均奖励也有上升的趋势。</li>
@@ -14587,9 +14567,7 @@ $$ \epsilon = a^t, \textrm{for } 0 < a < 1 \hspace{50px}\epsilon = \frac{1}{t^2}
 <div class="output">
 
 
-<div class="output_area">
-<div class="prompt"></div>
-
+<div class="output_area"><div class="prompt"></div>
 
 
 <div class="output_png output_subarea ">
@@ -16345,7 +16323,7 @@ zMzM6sQBlpmZmZmZWZ38f6zRVIXC5tUHAAAAAElFTkSuQmCC
 <ul>
 <li>我使用了学习率的0.99的t次方的衰减函数。这样可以让初始状态下随机率比较高，而后随机率锐减，并保持低概率的随机。</li>
 <li>在测试之前大约做了接近500次的实验。</li>
-<li>我使用了epsilon-tolerance=0.01，学习率是0.5 。降低tolerance是为了增加实验的次数。而学习率0.5则是为了均衡新实验和旧实验的数据和</li>
+<li>我使用了epsilon-tolerance=0.01，学习率是0.5 。降低tolerance是为了增加实验的次数。而学习率0.5则是为了均衡新实验和旧实验的数据和。旧数据是指累计动作最后得出的Q值，新数据则是当次的奖励。其实就是Q值计算的那个公式里面的self.alpha，如果增加，则当次奖励的占比上升，如果下降，则当次奖励的比例也降低。</li>
 <li>这次的学习器可以很明显的看出错误动作的下降曲线。以及平均奖励的提高。并且分数都在A以上。</li>
 <li>通过QLearning学习，的确表明驾驶代理程序学习到了一个比较合适的策略。</li>
 <li>评分是满意的。</li>
@@ -16425,6 +16403,7 @@ zMzM6sQBlpmZmZmZWZ38f6zRVIXC5tUHAAAAAElFTkSuQmCC
 <ul>
 <li>智能车并不知道终点在哪里，也不知道离目的地有多远，只知道当前哪个方向是向目的地靠近。所以未来的方向与当前的方向并没有关系。</li>
 <li>环境中，每一次的起点和终点并不固定，随机分布。未来的奖励如果从目的地扩散，对下一次的行驶并没有帮助。</li>
+<li>智能车完全不知道下一个口的状态，也完全不能理解这个地图的全貌以及每个路口的信息，智能车只动作于当下，所以与未来无关。</li>
 </ul>
 
 </div>
@@ -16444,8 +16423,4 @@ zMzM6sQBlpmZmZmZWZ38f6zRVIXC5tUHAAAAAElFTkSuQmCC
     </div>
   </div>
 </body>
-
- 
-
-
 </html>
