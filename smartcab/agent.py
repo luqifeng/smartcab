@@ -163,10 +163,10 @@ class LearningAgent(Agent):
         print self.state
         next_state = self.build_state()
         self.createQ(next_state)
-        if state[0] == action :
-            reward = reward + 2
-        else:
-            reward = reward - 2
+        #if state[0] == action :
+        #    reward = reward + 2
+        #else:
+        #    reward = reward - 2
         self.Q[state][action] = (1-self.alpha)*self.Q[state][action] + self.alpha*reward
                 
                 
